@@ -1,7 +1,7 @@
 %define name		imapproxy
 %define distname	up-%{name}
 %define version		1.2.4
-%define release		%mkrel 5
+%define release		%mkrel 6
 %define _ssldir		%{_sysconfdir}/ssl/imapproxy
 
 Name:		%{name}
@@ -33,8 +33,9 @@ user ID.
 %patch1 -p0
 
 %build
+%serverbuild
 # kerberos include is needed (because of openssl-0.9.7 ?)
-export CPPFLAGS="-I%{_prefix}/kerberos/include"
+export CPPFLAGS="$CPPFLAGS -I%{_prefix}/kerberos/include"
 %configure2_5x
 %make
 
