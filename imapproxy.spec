@@ -15,7 +15,6 @@ Source0:	http://www.imapproxy.org/downloads/%{distname}-%{version}.tar.bz2
 Source1:	%{name}.init
 Patch0:		%{name}-1.2.4-conf.patch
 Patch1:		%{name}-1.2.4-md5.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	tcp_wrappers-devel openssl-devel ncurses-devel
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
