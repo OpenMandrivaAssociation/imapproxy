@@ -7,7 +7,7 @@
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Summary:	Imapproxy is a proxy for the IMAP protocol
+Summary:	Proxy for the IMAP protocol
 License:	GPL
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
