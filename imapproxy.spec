@@ -1,20 +1,19 @@
 %define name		imapproxy
 %define distname	up-%{name}
-%define version		1.2.4
-%define release		%mkrel 7
+%define version		1.2.6
+%define release		%mkrel 1
 %define _ssldir		%{_sysconfdir}/ssl/imapproxy
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	Proxy for the IMAP protocol
-License:	GPL
+License:	GPLv2+
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
-Source0:	http://www.imapproxy.org/downloads/%{distname}-%{version}.tar.bz2
+Source0:	http://www.imapproxy.org/downloads/%{distname}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-1.2.4-conf.patch
-Patch1:		%{name}-1.2.4-md5.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildRequires:	tcp_wrappers-devel openssl-devel ncurses-devel
 Requires(post):	rpm-helper
@@ -30,13 +29,12 @@ user ID.
 %prep
 %setup -q -n %{distname}-%{version}
 %patch0 -p1 -b .init
-%patch1 -p0
 
 %build
 %serverbuild
 # kerberos include is needed (because of openssl-0.9.7 ?)
 export CPPFLAGS="$CPPFLAGS -I%{_prefix}/kerberos/include"
-%configure2_5x
+%configure
 %make
 
 %install
@@ -62,7 +60,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc COPYING copyright ChangeLog README README.ssl README.known_issues
+%doc copyright ChangeLog README README.ssl README.known_issues
 %dir %{_ssldir}
 %attr(0755,root,root) %{_sbindir}/in.imapproxyd
 %attr(0755,root,root) %{_sbindir}/pimpstat
