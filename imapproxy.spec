@@ -1,7 +1,7 @@
 %define name		imapproxy
 %define distname	up-%{name}
 %define version		1.2.6
-%define release		%mkrel 1
+%define release		%mkrel 3
 %define _ssldir		%{_sysconfdir}/ssl/imapproxy
 
 Name:		%{name}
