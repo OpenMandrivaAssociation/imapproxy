@@ -5,7 +5,7 @@
 Summary:	Proxy for the IMAP protocol
 Name:		%{name}
 Version:	1.2.6
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
@@ -36,6 +36,10 @@ user ID.
 
 %build
 %serverbuild
+
+# fixes https://qa.mandriva.com/show_bug.cgi?id=37974
+CFLAGS="`echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=2//'`"
+
 # kerberos include is needed (because of openssl-0.9.7 ?)
 export CPPFLAGS="$CPPFLAGS -I%{_prefix}/kerberos/include"
 %configure
