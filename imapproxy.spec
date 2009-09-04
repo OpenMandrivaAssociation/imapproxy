@@ -5,7 +5,7 @@
 Summary:	Proxy for the IMAP protocol
 Name:		%{name}
 Version:	1.2.6
-Release:	%mkrel 5
+Release:	%mkrel 6
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
