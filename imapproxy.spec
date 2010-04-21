@@ -42,7 +42,7 @@ CFLAGS="`echo $CFLAGS | sed 's/-Wp,-D_FORTIFY_SOURCE=2//'`"
 
 # kerberos include is needed (because of openssl-0.9.7 ?)
 export CPPFLAGS="$CPPFLAGS -I%{_prefix}/kerberos/include"
-%configure
+%configure2_5x
 %make
 
 %install
