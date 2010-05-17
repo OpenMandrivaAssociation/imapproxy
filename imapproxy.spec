@@ -4,16 +4,14 @@
 
 Summary:	Proxy for the IMAP protocol
 Name:		%{name}
-Version:	1.2.6
-Release:	%mkrel 6
+Version:	1.2.7
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
 Source0:	http://www.imapproxy.org/downloads/%{distname}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-1.2.4-conf.patch
-Patch1:		up-imapproxy-debian_fix.diff
-Patch2:		up-imapproxy-buffer_overflow_fix.diff
 BuildRequires:	tcp_wrappers-devel openssl-devel ncurses-devel
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
@@ -31,8 +29,6 @@ user ID.
 
 %setup -q -n %{distname}-%{version}
 %patch0 -p1 -b .init
-%patch1 -p1 -b .debian_fix
-%patch2 -p0 -b .buffer_overflow_fix
 
 %build
 %serverbuild
