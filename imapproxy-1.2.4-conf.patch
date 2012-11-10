@@ -1,0 +1,106 @@
+--- up-imapproxy-1.2.4/scripts/imapproxy.conf.init	2005-08-31 18:32:24.000000000 +0200
++++ up-imapproxy-1.2.4/scripts/imapproxy.conf	2005-09-24 21:32:04.000000000 +0200
+@@ -11,7 +11,7 @@
+ ##
+ ## This setting controls which imap server we proxy our connections to.
+ #
+-server_hostname your.imap.server.com
++server_hostname localhost
+ 
+ 
+ #
+@@ -22,7 +22,7 @@
+ ## connections will be allowed, but really the total number of simultaneous
+ ## connections, cached and active.
+ #
+-cache_size 3072
++cache_size 4096
+ 
+ 
+ #
+@@ -31,7 +31,7 @@
+ ## This setting specifies which port the proxy server will bind to and
+ ## accept incoming connections from.
+ #
+-listen_port 143
++listen_port 8143
+ 
+ 
+ #
+@@ -41,7 +41,7 @@
+ ## accept incoming connections to.  If undefined, bind to all.
+ ## Must be a dotted decimal IP address.
+ #
+-#listen_address 127.0.0.1
++listen_address 127.0.0.1
+ 
+ 
+ #
+@@ -52,13 +52,14 @@
+ # 
+ server_port 143
+ 
++
+ #
+ ## cache_expiration_time
+ ##
+ ## This setting controls how many seconds an inactive connection will be
+ ## cached.
+ #
+-cache_expiration_time 300
++cache_expiration_time 200
+ 
+ 
+ #
+@@ -74,7 +75,7 @@
+ ##
+ ## This setting controls which groupname the imap proxy process will run as.
+ #
+-proc_groupname nobody
++proc_groupname nogroup
+ 
+ 
+ #
+@@ -174,11 +175,36 @@
+ #
+ enable_admin_commands no
+ 
++#
++## tls_ca_file
++##
++## File containing one or more Certificate Authority (CA) certificates.
++## See README.ssl for more information.
++#
++#tls_ca_file /etc/ssl/imapproxy/ca-bundle.crt
++
++#
++## tls_ca_path
++##
++## Path to directory with certificates of CAs.  This directory must have
++## filenames with the hashed value of the certificate (see openssl(1)).
++## See README.ssl for more information.
++#
++#tls_ca_path
++
+ 
+ #
+-## Various path options for SSL CA certificates/directories
++## tls_cert_file
++##
++## File containing the certificate presented by imapproxy to the server for
++## client authentication during STARTTLS.  See README.ssl for more information.
++#
++tls_cert_file /etc/ssl/imapproxy/imapproxy.pem
++
++#
++## tls_key_file
++##
++## File containing the private key belonging to the client certificate.  See
++## README.ssl for more information.
+ #
+-#tls_ca_file /usr/share/ssl/certs/ca-bundle.crt
+-#tls_ca_path /usr/share/ssl/certs/
+-#tls_cert_file /usr/share/ssl/certs/mycert.crt
+-#tls_key_file /usr/share/ssl/certs/mycert.key
+\ No newline at end of file
++tls_key_file /etc/ssl/imapproxy/imapproxy.pem
