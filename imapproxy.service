@@ -1,0 +1,14 @@
+[Unit]
+Description=Imapproxy is a proxy for the IMAP protocol
+Requires=rpcbind.service
+After=syslog.target network.target rpcbind.service 
+
+[Service]
+Type=forking
+RemainAfterExit=yes
+EnvironmentFile=/etc/sysconfig/network
+#EnvironmentFile=/etc/imapproxy.conf
+ExecStart=/usr/sbin/in.imapproxyd
+
+[Install]
+WantedBy=multi-user.target
