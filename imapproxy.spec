@@ -4,7 +4,7 @@
 Summary:	Proxy for the IMAP protocol
 Name:		imapproxy
 Version:	1.2.7
-Release:	3
+Release:	5
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
@@ -53,10 +53,13 @@ install -m 755 %{SOURCE1} %{buildroot}%{_unitdir}/imapproxy.service
 %clean
 
 %post
-%_post_service %{name}
+%systemd_post %{name}.service
 
 %preun
-%_preun_service %{name}
+%systemd_preun %{name}.service
+
+%postun
+%systemd_postun_with_restart %{name}.service
 
 %files
 %doc copyright ChangeLog README README.ssl README.known_issues
