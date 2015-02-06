@@ -4,7 +4,7 @@
 Summary:	Proxy for the IMAP protocol
 Name:		imapproxy
 Version:	1.2.7
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://www.imapproxy.org/
