@@ -7,7 +7,7 @@ Version:	1.2.7
 Release:	6
 License:	GPLv2+
 Group:		System/Servers
-URL:		http://www.imapproxy.org/
+URL:		https://www.imapproxy.org/
 Source0:	http://www.imapproxy.org/downloads/%{distname}-%{version}.tar.gz
 Source1:	%{name}.service
 Patch0:		%{name}-1.2.4-conf.patch
