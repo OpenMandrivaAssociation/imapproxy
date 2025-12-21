@@ -11,6 +11,11 @@ URL:		https://www.imapproxy.org/
 Source0:	http://www.imapproxy.org/downloads/%{distname}-%{version}.tar.gz
 Source1:	%{name}.service
 Patch0:		%{name}-1.2.4-conf.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	tcp_wrappers-devel openssl-devel ncurses-devel
 Requires(post):	rpm-helper
 Requires(preun): rpm-helper
